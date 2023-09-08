@@ -21,4 +21,22 @@ public class ProdutoService {
 	public Produto buscarPorId(Long id) {  
 		return repository.buscarPorId(id);
 	}
+
+	public void salvar(Produto produto) {
+		repository.save(produto);
+	}
+	
+
+	/*
+	 * INICIALMENTE VAMOS UTILIZAR O MÉTODO SALVAR, 
+	 * QUANDO SE HÁ UM ID O JPA JA ENTENDE QUE O RECURSO EXISTE E ENTÃO EXECUTA UM UPDATE!
+	 * APÓS A EVOLUÇÃO DOS SISTEMA IREMOS IMPLEMENTAR UM UPDATE MAIS COMPLETO E VALIDATIVO.
+	 */
+	public void atualizar(Produto produto) {
+		salvar(produto);
+	}
+
+	public void excluirPorId(Long id) {
+		 repository.deleteById(id);
+	}
 }
